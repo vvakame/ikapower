@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "sourceMap": true,
+        "listFiles": true,
+        "newLine": "LF",
+        "noEmitOnError": true,
+        "inlineSources": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "./**/*.tsx",
+        "!./**/*.d.ts",
+        "./typings/**/*.d.ts",
+        "!./example/**/*.ts",
+        "!./pages/**/*.ts",
+        "!./node_modules/**/*"
+    ],
+    "exclude": [],
+    "files": [
+        "public/lib/index.ts"
+    ]
+}
