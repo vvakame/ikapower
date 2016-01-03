@@ -7,10 +7,11 @@
     "build": "tsconfig -u && tsc -p ./ && browserify ./public/lib/index.js -o public/main.js",
     "start": "live-server --open=public",
     "pages": "npm run build && cp -r public/* pages/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-test": "tsc --target es5 --module commonjs --noImplicitAny typings/bundle.d.ts test/indexSpec.ts",
+    "test": "npm run build-test && mocha --require intelli-espower-loader"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "vvakame",
+  "license": "MIT",
   "dependencies": {
     "angular2": "^2.0.0-beta.0",
     "es6-promise": "^3.0.2",
@@ -21,7 +22,10 @@
   },
   "devDependencies": {
     "browserify": "^12.0.1",
+    "intelli-espower-loader": "^1.0.1",
     "live-server": "^0.9.0",
+    "mocha": "^2.3.4",
+    "power-assert": "^1.2.0",
     "tsconfig-cli": "^0.1.1",
     "tslint": "^3.2.1",
     "typescript": "^1.7.5"

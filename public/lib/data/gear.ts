@@ -97,17 +97,6 @@ const data: Gear[] = [
         stars: 3
     },
     {
-        id: "squidNordic",
-        name: {
-            ja: "イカノルディック",
-            en: "Squid Nordic"
-        },
-        type: getGearTypeById("headgear"),
-        main: getGearPowerById("comeback"),
-        brand: getBrandById("skalop"),
-        stars: 3
-    },
-    {
         id: "treasureHunter",
         name: {
             ja: "トレジャーメット",
@@ -942,17 +931,6 @@ const data: Gear[] = [
         main: getGearPowerById("haunt"),
         brand: getBrandById("forge"),
         stars: 2
-    },
-    {
-        id: "fuguTee",
-        name: {
-            ja: "マルフグT",
-            en: "Fugu Tee"
-        },
-        type: getGearTypeById("clothing"),
-        main: getGearPowerById("swimSpeedUp"),
-        brand: getBrandById("firefin"),
-        stars: 1
     },
     {
         id: "herbivoreTee",
@@ -2836,17 +2814,6 @@ const data: Gear[] = [
         stars: 3
     },
     {
-        id: "leSoccerCleats",
-        name: {
-            ja: "レアスパイカ",
-            en: "LE Soccer Cleats"
-        },
-        type: getGearTypeById("shoes"),
-        main: getGearPowerById("inkResistanceUp"),
-        brand: getBrandById("takoroka"),
-        stars: 2
-    },
-    {
         id: "mawcasins",
         name: {
             ja: "ジョーズモカシン",
@@ -3300,6 +3267,10 @@ const data: Gear[] = [
 ];
 
 export default data;
+
+export const headgears = data.filter(d => d.type.id === "headgear");
+export const clothing = data.filter(d => d.type.id === "clothing");
+export const shoes = data.filter(d => d.type.id === "shoes");
 
 export function getById(id: string): Gear {
     let found = data.filter(v => v.id === id)[0];

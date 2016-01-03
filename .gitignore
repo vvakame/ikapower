@@ -1,3 +1,9 @@
 node_modules/
+npm-debug.log
+
+typings/
+
 public/**/*.js
 public/**/*.js.map
+test/**/*.js
+test/**/*.js.map

@@ -28,6 +28,11 @@
         "public/lib/data/geartype.ts",
         "public/lib/data/index.ts",
         "public/lib/index.ts",
-        "public/lib/model/model.ts"
+        "public/lib/model/finder.ts",
+        "public/lib/model/model.ts",
+        "test/model/finderSpec.ts",
+        "typings/empower/empower.d.ts",
+        "typings/power-assert-formatter/power-assert-formatter.d.ts",
+        "typings/power-assert/power-assert.d.ts"
     ]
 }
