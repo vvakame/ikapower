@@ -16,12 +16,19 @@
         "./**/*.tsx",
         "!./**/*.d.ts",
         "./typings/**/*.d.ts",
+        "!./typings/bundle.d.ts",
+        "!./typings/mocha/*.d.ts",
+        "!./typings/power-assert/*.d.ts",
+        "!./test/**/*.ts",
         "!./example/**/*.ts",
         "!./pages/**/*.ts",
         "!./node_modules/**/*"
     ],
     "exclude": [],
     "files": [
+        "public/component/gearPowerSelect.ts",
+        "public/component/powerSetting.ts",
+        "public/component/searchResult.ts",
         "public/lib/data/brand.ts",
         "public/lib/data/gear.ts",
         "public/lib/data/gearpower.ts",
@@ -30,9 +37,8 @@
         "public/lib/index.ts",
         "public/lib/model/finder.ts",
         "public/lib/model/model.ts",
-        "test/model/finderSpec.ts",
+        "public/service/ikaPowerService.ts",
         "typings/empower/empower.d.ts",
-        "typings/power-assert-formatter/power-assert-formatter.d.ts",
-        "typings/power-assert/power-assert.d.ts"
+        "typings/power-assert-formatter/power-assert-formatter.d.ts"
     ]
 }
