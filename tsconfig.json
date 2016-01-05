@@ -22,7 +22,8 @@
         "!./test/**/*.ts",
         "!./example/**/*.ts",
         "!./pages/**/*.ts",
-        "!./node_modules/**/*"
+        "!./node_modules/**/*",
+        "node_modules/typescript/lib/lib.es6.d.ts"
     ],
     "exclude": [],
     "files": [

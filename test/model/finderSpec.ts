@@ -9,7 +9,7 @@ import {default as find, gearInitFilter}  from "../../public/lib/model/finder";
 describe("finder", () => {
     describe("find", () => {
         it("can find pattern #1", () => {
-            let result = find({
+            return find({
                 required: [
                     {
                         id: "damageUp",
@@ -27,16 +27,18 @@ describe("finder", () => {
                         value: 10
                     },
                 ]
-            });
-            assert(result.length !== 0);
+            })
+                .then(result => {
+                    assert(result.length !== 0);
 
-            assert(result[0].headgear.id === "squashHeadband");
-            assert(result[0].clothing.id === "schoolJersey");
-            assert(result[0].shoes.id === "blackSeahorses");
+                    assert(result[0].headgear.id === "squashHeadband");
+                    assert(result[0].clothing.id === "schoolJersey");
+                    assert(result[0].shoes.id === "blackSeahorses");
+                });
         });
 
         it("can find pattern #2", () => {
-            let result = find({
+            return find({
                 required: [
                     {
                         id: "inkSaverSub",
@@ -54,11 +56,13 @@ describe("finder", () => {
                         id: "inkResistanceUp"
                     },
                 ]
-            });
-            const odds = result[0].odds;
-            result = result.filter(r => r.odds === odds);
+            })
+                .then(result => {
+                    const odds = result[0].odds;
+                    result = result.filter(r => r.odds === odds);
 
-            assert(result.length === 3);
+                    assert(result.length === 3);
+                });
         });
     });
 

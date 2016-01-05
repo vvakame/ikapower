@@ -7,7 +7,7 @@
     "build": "tsconfig -u && tsc -p ./ && browserify ./public/lib/index.js -o public/main.js",
     "start": "live-server --open=public",
     "pages": "npm run build && cp -r public/* pages/",
-    "build-test": "tsc --target es5 --module commonjs --noImplicitAny typings/bundle.d.ts test/indexSpec.ts",
+    "build-test": "tsc --target es5 --module commonjs --noImplicitAny typings/bundle.d.ts test/indexSpec.ts node_modules/typescript/lib/lib.es6.d.ts",
     "test": "npm run build-test && mocha --require intelli-espower-loader"
   },
   "author": "vvakame",

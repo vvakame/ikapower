@@ -317,7 +317,7 @@ export class TotalSpec {
     }
 }
 
-export default function find(opts: Options): Result[] {
+export default function find(opts: Options): Promise<Result[]> {
     let startAt = Date.now();
     
     // 検索対象ギア一覧を作る
@@ -364,7 +364,7 @@ export default function find(opts: Options): Result[] {
     // TODO ギアの並び順を一回整えたい
     resultList = resultList.sort((a, b) => b.odds - a.odds); // oddsの降順
 
-    return resultList;
+    return Promise.resolve(resultList);
 }
 
 /**

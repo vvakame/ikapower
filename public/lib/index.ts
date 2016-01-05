@@ -78,10 +78,14 @@ class AppComponent {
     }
 
     doSearch() {
-        this.searchResultList = this.ikaPowerService.find({
-            required: this.selectedGearPowers.map(v => v.spec)
-        });
-        this.searchExecuted = true;
+        this.ikaPowerService
+            .find({
+                required: this.selectedGearPowers.map(v => v.spec)
+            })
+            .then(resultList => {
+                this.searchResultList = resultList;
+                this.searchExecuted = true;
+            });
     }
 }
 
