@@ -29,6 +29,7 @@
         "public/component/gearPowerSelect.ts",
         "public/component/powerSetting.ts",
         "public/component/searchResult.ts",
+        "public/component/searchResultRow.ts",
         "public/lib/data/brand.ts",
         "public/lib/data/gear.ts",
         "public/lib/data/gearpower.ts",

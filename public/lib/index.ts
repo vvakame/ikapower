@@ -29,15 +29,24 @@ export interface GearPowerSetting {
     template: `
         <h1>We gotta IkaPower!</h1>
 
-        <gearpower-select (selected)="onGearPowerAdded($event)">
+        <gearpower-select
+            (selected)="onGearPowerAdded($event)">
         </gearpower-select>
         
-        <power-setting *ngFor="#p of selectedGearPowers" [target]="p">
+        <power-setting
+            *ngFor="#p of selectedGearPowers"
+            [target]="p"
+            (removed)="onGearPowerRemoved($event)">
         </power-setting>
         
-        <button (click)="doSearch()">検索</button>
+        <button
+            (click)="doSearch()">
+            検索
+        </button>
 
-        <search-result *ngFor="#r of searchResultList" [result]="r">
+        <search-result
+            *ngIf="searchExecuted"
+            [result]="searchResultList">
         </search-result>
     `,
     providers: [IkaPowerService],
@@ -46,6 +55,7 @@ export interface GearPowerSetting {
 class AppComponent {
     selectedGearPowers: GearPowerSetting[] = [];
     searchResultList: Result[] = [];
+    searchExecuted = false;
 
     constructor(public ikaPowerService: IkaPowerService) {
     }
@@ -63,10 +73,15 @@ class AppComponent {
         this.selectedGearPowers.push(setting);
     }
 
+    onGearPowerRemoved(selected: GearPowerSetting) {
+        this.selectedGearPowers = this.selectedGearPowers.filter(p => p !== selected);
+    }
+
     doSearch() {
         this.searchResultList = this.ikaPowerService.find({
             required: this.selectedGearPowers.map(v => v.spec)
         });
+        this.searchExecuted = true;
     }
 }
 

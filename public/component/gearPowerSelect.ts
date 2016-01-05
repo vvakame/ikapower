@@ -9,12 +9,18 @@ import {GearPower} from "../lib/model/model";
 @Component({
     selector: 'gearpower-select',
     template: `
-        <select 
-            class="form-control"
-            #gearpower
-            (change)="onSelected(gearpower.value)">
-            <option *ngFor="#p of gearpowers" [value]="p.id">{{p.name.ja}}</option>
-        </select>
+        <div>
+            <select 
+                class="form-control"
+                #gearpower
+                (change)="onSelected(gearpower.value)">
+                <option
+                    *ngFor="#p of gearpowers"
+                    [value]="p.id">
+                    {{p.name.ja}}
+                </option>
+            </select>
+        </div>
     `,
     providers: [IkaPowerService],
     directives: [CORE_DIRECTIVES]
