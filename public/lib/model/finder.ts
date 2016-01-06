@@ -86,13 +86,32 @@ class Pattern {
 }
 
 export class Result {
-    static generate(pattern: Pattern, spec: TotalSpec): Result[] {
-        return pattern.sets.map(s => new Result(s.headgear, s.clothing, s.shoes, spec));
+    specs: TotalSpec[] = [];
+    constructor(public headgear: Gear, public clothing: Gear, public shoes: Gear, public odds: number) {
     }
 
+    addSpec(spec: TotalSpec) {
+        this.specs.push(spec);
+    }
+}
+
+class ResultUnit {
+    static generate(pattern: Pattern, spec: TotalSpec): ResultUnit[] {
+        return pattern.sets.map(s => new ResultUnit(s.headgear, s.clothing, s.shoes, spec));
+    }
+
+    _id: string;
     _odds: number;
 
     constructor(public headgear: Gear, public clothing: Gear, public shoes: Gear, public spec: TotalSpec) {
+    }
+
+    get id(): string {
+        if (this._id) {
+            return this._id;
+        }
+        this._id = `${this.headgear.id}|${this.clothing.id}|${this.shoes.id}|${this.odds}`;
+        return this._id;
     }
 
     get odds(): number {
@@ -350,7 +369,7 @@ export default function find(opts: Options): Promise<Result[]> {
         });
     });
 
-    let resultList: Result[] = [];
+    let resultUnitList: ResultUnit[] = [];
     let specs = TotalSpec.generate(opts);
     Object.keys(patternMap)
         .map(patternId => patternMap[patternId])
@@ -358,13 +377,24 @@ export default function find(opts: Options): Promise<Result[]> {
             specs
                 .filter(s => pattern.isSatisfySpec(s))
                 .forEach(s => {
-                    resultList = resultList.concat(Result.generate(pattern, s));
+                    resultUnitList = resultUnitList.concat(ResultUnit.generate(pattern, s));
                 });
         });
-    // TODO ギアの組み合わせの重複を排除する
+
+    // ギアの組み合わせの重複を排除する
     // 例えば、アオサドーレなら 攻撃力UP10とスペシャル増加量UP9 と 攻撃力UP9とスペシャル増加量UP9 両方を満たすのでダブってしまう
-        
-    // TODO ギアの並び順を一回整えたい
+    let resultMap: { [resultId: string]: Result } = {};
+    resultUnitList.forEach(r => {
+        let result = resultMap[r.id];
+        if (!result) {
+            result = new Result(r.headgear, r.clothing, r.shoes, r.odds);
+            resultMap[r.id] = result;
+        }
+        result.addSpec(r.spec);
+    });
+    let resultList = Object.keys(resultMap).map(resultId => resultMap[resultId]);
+
+    // TODO ギアの名前順で一回整えたい
     resultList = resultList.sort((a, b) => b.odds - a.odds); // oddsの降順
 
     return Promise.resolve(resultList);
