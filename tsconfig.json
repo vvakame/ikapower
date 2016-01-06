@@ -27,6 +27,7 @@
     "exclude": [],
     "files": [
         "public/component/gearPowerSelect.ts",
+        "public/component/ikaPower.ts",
         "public/component/powerSetting.ts",
         "public/component/searchResult.ts",
         "public/component/searchResultRow.ts",

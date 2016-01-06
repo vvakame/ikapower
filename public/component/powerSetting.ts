@@ -2,7 +2,7 @@
 
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 
-import {GearPowerSetting} from "../lib/";
+import {GearPowerSetting} from "./ikaPower";
 
 @Component({
     selector: 'power-setting',
