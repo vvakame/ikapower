@@ -361,6 +361,9 @@ export default function find(opts: Options): Promise<Result[]> {
                     resultList = resultList.concat(Result.generate(pattern, s));
                 });
         });
+    // TODO ギアの組み合わせの重複を排除する
+    // 例えば、アオサドーレなら 攻撃力UP10とスペシャル増加量UP9 と 攻撃力UP9とスペシャル増加量UP9 両方を満たすのでダブってしまう
+        
     // TODO ギアの並び順を一回整えたい
     resultList = resultList.sort((a, b) => b.odds - a.odds); // oddsの降順
 

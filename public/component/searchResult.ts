@@ -1,7 +1,6 @@
 "use strict";
 
-import {Component, Input, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES} from "angular2/common";
+import {Component, Input, OnChanges, SimpleChange} from 'angular2/core';
 
 import {Result} from "../lib/model/finder";
 import SearchResultRow from "./searchResultRow";
@@ -17,14 +16,20 @@ import SearchResultRow from "./searchResultRow";
             </search-result-row>
         </div>
     `,
-    directives: [CORE_DIRECTIVES, SearchResultRow]
+    directives: [SearchResultRow]
 })
-export default class SearchResult implements OnInit {
-    @Input() result: Result[] = [];
+export default class SearchResult implements OnChanges {
+    @Input("result") _result: Result[] = [];
+    result: Result[] = [];
+
     resultLength: number;
 
-    ngOnInit() {
-        this.resultLength = this.result.length;
-        this.result = this.result.slice(0, 30);
+    ngOnChanges(changes: { [key: string]: SimpleChange; }) {
+        let change = changes["result"] || changes["_result"];
+        if (change) {
+            let newValue = change.currentValue as Result[];
+            this.resultLength = newValue.length;
+            this.result = newValue.slice(0, 30);
+        }
     }
 }

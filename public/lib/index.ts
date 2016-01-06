@@ -1,15 +1,15 @@
 "use strict";
 
+// 'angular2/bundles/angular2-polyfills' をscriptタグで参照するか、以下
 import "reflect-metadata";
 // import "zone.js";
 // http://stackoverflow.com/questions/34359303/zone-is-not-defined-for-ngzone-angular22-0-0-beta-0
 import "zone.js/lib/browser/zone-microtask";
-import 'rxjs/Rx';
-// import 'angular2/bundles/angular2-polyfills';
 
-import {bootstrap} from 'angular2/platform/browser'
+import 'rxjs/Rx';
+
+import {bootstrap} from 'angular2/platform/browser';
 import {Component, Output, EventEmitter} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
 
 import IkaPowerService from "../service/ikaPowerService";
 import {GearPower} from "./model/model";
@@ -18,6 +18,9 @@ import {PowerSpec, Result} from "./model/finder";
 import GearPowerSelect from "../component/gearPowerSelect";
 import PowerSetting from "../component/powerSetting";
 import SearchResult from "../component/searchResult";
+
+// TODO webpackにする angular2-seed 的な奴見る
+// https://github.com/laco0416/angular2-example/blob/master/script/app.ts
 
 export interface GearPowerSetting {
     gearpower: GearPower;
@@ -49,8 +52,7 @@ export interface GearPowerSetting {
             [result]="searchResultList">
         </search-result>
     `,
-    providers: [IkaPowerService],
-    directives: [CORE_DIRECTIVES, GearPowerSelect, PowerSetting, SearchResult]
+    directives: [GearPowerSelect, PowerSetting, SearchResult]
 })
 class AppComponent {
     selectedGearPowers: GearPowerSetting[] = [];
@@ -89,4 +91,4 @@ class AppComponent {
     }
 }
 
-bootstrap(AppComponent);
+bootstrap(AppComponent, [IkaPowerService]);

@@ -1,7 +1,6 @@
 "use strict";
 
 import {Component, Input} from 'angular2/core';
-import {CORE_DIRECTIVES} from "angular2/common";
 
 import {Gear} from "../lib/model/model";
 import {Result} from "../lib/model/finder";
@@ -15,8 +14,7 @@ import {Result} from "../lib/model/finder";
             クツ　：{{result.shoes.name.ja}} {{gearpowerMain(result.shoes)}} ブランド：{{brandStrengthString(result.shoes)}}<br>
             確率　：{{result.odds}}
         </div>
-    `,
-    directives: [CORE_DIRECTIVES]
+    `
 })
 export default class SearchResultRow {
     @Input() result: Result;

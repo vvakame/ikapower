@@ -1,7 +1,6 @@
 "use strict";
 
 import {Component, Output, EventEmitter} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
 
 import IkaPowerService from "../service/ikaPowerService";
 import {GearPower} from "../lib/model/model";
@@ -14,6 +13,7 @@ import {GearPower} from "../lib/model/model";
                 class="form-control"
                 #gearpower
                 (change)="onSelected(gearpower.value)">
+                <option value="">（未選択）</option>
                 <option
                     *ngFor="#p of gearpowers"
                     [value]="p.id">
@@ -22,8 +22,7 @@ import {GearPower} from "../lib/model/model";
             </select>
         </div>
     `,
-    providers: [IkaPowerService],
-    directives: [CORE_DIRECTIVES]
+    providers: [IkaPowerService]
 })
 export default class GearPowerSelect {
     gearpowers: GearPower[] = [];

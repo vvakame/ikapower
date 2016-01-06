@@ -1,7 +1,6 @@
 "use strict";
 
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
-import {CORE_DIRECTIVES} from "angular2/common";
 
 import {GearPowerSetting} from "../lib/";
 
@@ -15,8 +14,7 @@ import {GearPowerSetting} from "../lib/";
             </span>
             <button (click)="onRemove()">☓</button>
         </div>
-    `,
-    directives: [CORE_DIRECTIVES]
+    `
 })
 export default class PowerSetting {
     @Input() target: GearPowerSetting;
