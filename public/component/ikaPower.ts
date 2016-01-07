@@ -70,6 +70,7 @@ export default class IkaPower {
     doSearch() {
         this.ikaPowerService
             .find({
+                debug: true,
                 required: this.selectedGearPowers.map(v => v.spec)
             })
             .then(resultList => {
