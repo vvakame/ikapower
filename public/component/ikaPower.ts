@@ -18,8 +18,6 @@ export interface GearPowerSetting {
 @Component({
     selector: 'ikapower',
     template: `
-        <h1>We gotta IkaPower!</h1>
-
         <gearpower-select
             (selected)="onGearPowerAdded($event)">
         </gearpower-select>
