@@ -155,7 +155,6 @@ export function getById(id: string): Brand {
     let found = data.filter(v => v.id === id)[0];
     if (!found) {
         throw new Error(`brand: ${id} is not found`);
-        return null;
     }
     return found
 }

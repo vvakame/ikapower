@@ -22,7 +22,8 @@
         "!./test/**/*.ts",
         "!./example/**/*.ts",
         "!./pages/**/*.ts",
-        "!./node_modules/**/*"
+        "!./node_modules/**/*",
+        "node_modules/typescript/lib/lib.es6.d.ts"
     ],
     "exclude": [],
     "files": [
@@ -40,7 +41,6 @@
         "public/lib/model/finder.ts",
         "public/lib/model/model.ts",
         "public/service/ikaPowerService.ts",
-        "typings/empower/empower.d.ts",
-        "typings/power-assert-formatter/power-assert-formatter.d.ts"
+        "node_modules/typescript/lib/lib.es6.d.ts"
     ]
 }

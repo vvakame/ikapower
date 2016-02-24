@@ -3276,7 +3276,6 @@ export function getById(id: string): Gear {
     let found = data.filter(v => v.id === id)[0];
     if (!found) {
         throw new Error(`gear: ${id} is not found`);
-        return null;
     }
     return found
 }

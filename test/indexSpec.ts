@@ -1,3 +1,3 @@
 "use strict";
 
-export * from "./model/finderSpec";
+import "./model/finderSpec";

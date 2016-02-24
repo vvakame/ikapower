@@ -32,7 +32,6 @@ export function getById(id: string): GearType {
     let found = data.filter(v => v.id === id)[0];
     if (!found) {
         throw new Error(`gear type: ${id} is not found`);
-        return null;
     }
     return found
 }

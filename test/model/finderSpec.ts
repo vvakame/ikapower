@@ -1,6 +1,6 @@
 "use strict";
 
-import assert from "power-assert";
+import * as assert from "power-assert";
 
 import gears from "../../public/lib/data/gear";
 

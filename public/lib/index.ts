@@ -2,11 +2,7 @@
 
 // 'angular2/bundles/angular2-polyfills' をscriptタグで参照するか、以下
 import "reflect-metadata";
-// import "zone.js";
-// http://stackoverflow.com/questions/34359303/zone-is-not-defined-for-ngzone-angular22-0-0-beta-0
-import "zone.js/lib/browser/zone-microtask";
-
-import 'rxjs/Rx';
+import "zone.js";
 
 import {bootstrap} from 'angular2/platform/browser';
 
